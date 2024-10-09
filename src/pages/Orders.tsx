@@ -17,7 +17,7 @@ export default function Orders() {
                         <button
                             className='px-4 py-1 h-10 rounded-md bg-primary tracking-wider uppercase text-xs sm:text-sm font-medium text-white hover:brightness-95 duration-150'>
                             <Search className='md:mr-2 mb-1 size-3.5 inline' />
-                            <span className='hidden md:block'>Rechercher</span>
+                            <span className='hidden md:inline'>Rechercher</span>
                         </button>
                     </div>
                     <div>
