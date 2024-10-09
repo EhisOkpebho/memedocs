@@ -1,11 +1,11 @@
 import {Blocks, CirclePlus, Filter} from "lucide-react";
-import MySpaceLayout from "../layouts/MySpaceLayout";
 import FormInput from "../components/FormInput";
+import PharmacistSpaceLayout from "../layouts/PharmacistSpaceLayout";
 
 export default function Commands() {
     return (
         <>
-            <MySpaceLayout>
+            <PharmacistSpaceLayout>
                 <div className='p-8 w-full flex flex-col gap-y-8 rounded-3xl shadow-sm bg-white'>
                     <div className='flex flex-col md:flex-row gap-y-4 justify-between'>
                         <h3 className='font-bold text-2xl'>
@@ -19,7 +19,7 @@ export default function Commands() {
                     </div>
                     <FormInput label='Filtrer' placeholder='Nom du produit' icon={Filter} className='h-8'/>
                 </div>
-            </MySpaceLayout>
+            </PharmacistSpaceLayout>
         </>
     )
 }

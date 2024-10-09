@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import {Provider} from "react-redux";
 import store from "./redux/store";
+import Orders from "./pages/Orders";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
                       <Route index path='/profile' element={<Profile />} />
                       <Route index path='/commands' element={<Commands />} />
                       <Route index path='/stock' element={<StockManagement />} />
+                      <Route index path='/orders' element={<Orders />} />
                   </Routes>
               </Layout>
           </BrowserRouter>

@@ -6,7 +6,8 @@ const userSlice = createSlice({
         user: {
             firstname: 'Ehis',
             lastname: 'OKPEBHO',
-            identifier: 'Ehis OKPEBHO'
+            identifier: 'Ehis OKPEBHO',
+            type: 'doctor'
         }
     },
     reducers: {
@@ -17,7 +18,8 @@ const userSlice = createSlice({
             state.user = {
                 firstname: 'Ehis',
                 lastname: 'OKPEBHO',
-                identifier: 'Ehis OKPEBHO'
+                identifier: 'Ehis OKPEBHO',
+                type: 'doctor'
             }
         }
     }

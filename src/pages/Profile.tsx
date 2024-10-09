@@ -1,11 +1,12 @@
 import {CircleUser, Save} from "lucide-react";
 import FormInput from "../components/FormInput";
-import MySpaceLayout from "../layouts/MySpaceLayout";
+import PharmacistSpaceLayout from "../layouts/PharmacistSpaceLayout";
+import {useGetMe} from "../utils/utils";
+import DoctorSpaceLayout from "../layouts/DoctorSpaceLayout";
 
-export default function Profile() {
+function Profile() {
     return (
-        <MySpaceLayout>
-            <div className='p-8 w-full flex flex-col gap-y-8 rounded-3xl shadow-sm bg-white'>
+        <div className='p-8 w-full flex flex-col gap-y-8 rounded-3xl shadow-sm bg-white'>
                 <h3 className='font-bold text-2xl'>
                     <CircleUser className='mb-1 mr-2 size-6 inline'/>
                     Mon profil
@@ -28,7 +29,28 @@ export default function Profile() {
                         Enregistrer les modifications
                     </button>
                 </form>
-            </div>
-        </MySpaceLayout>
+        </div>
     )
+}
+
+export default function () {
+    const user = useGetMe()
+
+    if (user.type === 'pharmacist') {
+        return  (
+            <PharmacistSpaceLayout>
+                <Profile />
+            </PharmacistSpaceLayout>
+        )
+    }
+
+    if (user.type === 'doctor') {
+        return (
+            <DoctorSpaceLayout>
+                <Profile />
+            </DoctorSpaceLayout>
+        )
+    }
+
+    return null
 }
