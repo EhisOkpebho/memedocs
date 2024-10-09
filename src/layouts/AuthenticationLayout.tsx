@@ -9,10 +9,10 @@ type Props = {
 
 export default function AuthenticationLayout({ title, position, children }: Props) {
     return (
-        <div className={cs('h-[70vh] overflow-hidden flex rounded-3xl shadow-sm bg-white', position === 'right' && 'flex-row-reverse')}>
-            <div className='h-full w-full bg-cover bg-primary' style={{backgroundImage: "url('/pharmacie.jpg')"}}>
+        <div className={cs('md:h-[70vh] overflow-hidden flex flex-col md:flex-row rounded-3xl shadow-sm bg-white', position === 'right' && 'md:flex-row-reverse')}>
+            <div className='md:h-full w-full bg-cover bg-primary' style={{backgroundImage: "url('/pharmacie.jpg')"}}>
                 <div
-                    className='w-full h-full flex flex-col items-center justify-center space-y-1 bg-black/50 backdrop-blur-sm'>
+                    className='py-4 w-full h-full flex flex-col items-center justify-center space-y-1 bg-black/50 backdrop-blur-sm'>
                     <img src='/logo.png' width={256} height={256} alt='logo' className='w-1/2'/>
                     {/*<h1 className='font-extrabold text-4xl text-white'>MéméDocs</h1>*/}
                 </div>

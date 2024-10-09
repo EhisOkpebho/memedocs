@@ -1,8 +1,8 @@
 import {CircleArrowRight, Cross, LucideIcon, Stethoscope, User} from "lucide-react";
-import {cs} from "../utils/utils";
-import {useRef} from "react";
+import {cs, useGetMe} from "../utils/utils";
+import {useEffect, useRef} from "react";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
+import {useNavigate} from "react-router-dom";
 
 const PROFILES: { name: string, icon: LucideIcon, color: string, options: string[] }[] = [
     {
@@ -35,7 +35,16 @@ const PROFILES: { name: string, icon: LucideIcon, color: string, options: string
 ]
 
 export default function Home() {
+    const navigate = useNavigate()
+    const me = useGetMe()
+
     const listRefs = useRef<(HTMLLIElement | null)[]>([])
+
+    useEffect(() => {
+        if (me) {
+            navigate('/profile')
+        }
+    }, [me])
 
     const storeRef = (el: any, index: number) => {
         if (el && !listRefs.current[index]) {

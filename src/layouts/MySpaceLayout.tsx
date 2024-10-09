@@ -12,7 +12,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                 <div
                     className='p-4 w-full h-full flex flex-col items-center justify-center bg-black/50 backdrop-blur-sm'>
                     {/*<img src='/logo.png' width={256} height={256} alt='logo' className='w-1/2 md:w-1/3'/>*/}
-                    <h1 className='text-center leading-10 font-extrabold text-3xl md:text-4xl text-white'>Bon <span
+                    <h1 className='text-center leading-8 md:leading-10 font-extrabold text-2xl md:text-4xl text-white'>Bon <span
                         className='text-pharmacist'>retour</span> parmis nous !</h1>
                 </div>
             </div>
@@ -20,17 +20,17 @@ export default function Layout({ children }: { children: ReactNode }) {
                 <Link to='/profile'
                     className='py-4 w-full  flex items-center justify-center rounded-3xl rounded-r-none border border-b-2 hover:border-primary/50 hover:bg-primary/10 hover:text-primary tracking-wider duration-150'>
                     <CircleUser className='mr-2 mb-1 size-5'/>
-                    Profil
+                    <span className='hidden md:block'>Profil</span>
                 </Link>
                 <Link to='/commands'
-                    className='py-4 w-full flex items-center justify-center border border-b-2 hover:border-primary/50 hover:bg-primary/10 hover:text-primary tracking-wider duration-150'>
+                      className='py-4 w-full flex items-center justify-center border border-b-2 hover:border-primary/50 hover:bg-primary/10 hover:text-primary tracking-wider duration-150'>
                     <ListOrdered className='mr-1 mb-1 size-5'/>
-                    Liste des commandes
+                    <span className='hidden md:block'>Liste des commandes</span>
                 </Link>
                 <Link to='/stock'
-                    className='py-4 w-full  flex items-center justify-center rounded-3xl rounded-l-none border border-b-2 hover:border-primary/50 hover:bg-primary/10 hover:text-primary tracking-wider duration-150'>
+                      className='py-4 w-full  flex items-center justify-center rounded-3xl rounded-l-none border border-b-2 hover:border-primary/50 hover:bg-primary/10 hover:text-primary tracking-wider duration-150'>
                     <Blocks className='mr-1 mb-1 size-5'/>
-                    Gestion du stock
+                    <span className='hidden md:block'>Gestion du stock</span>
                 </Link>
             </div>
             {children}

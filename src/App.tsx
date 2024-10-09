@@ -8,21 +8,25 @@ import Commands from "./pages/Commands";
 import StockManagement from './pages/StockManagement';
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
+import {Provider} from "react-redux";
+import store from "./redux/store";
 
 function App() {
   return (
-      <BrowserRouter>
-          <Layout>
-              <Routes>
-                  <Route index path='/' element={<Home />} />
-                  <Route index path='/auth/login' element={<Login />} />
-                  <Route index path='/auth/signup' element={<Registration />} />
-                  <Route index path='/profile' element={<Profile />} />
-                  <Route index path='/commands' element={<Commands />} />
-                  <Route index path='/stock' element={<StockManagement />} />
-              </Routes>
-          </Layout>
-      </BrowserRouter>
+      <Provider store={store}>
+          <BrowserRouter>
+              <Layout>
+                  <Routes>
+                      <Route index path='/' element={<Home />} />
+                      <Route index path='/auth/login' element={<Login />} />
+                      <Route index path='/auth/signup' element={<Registration />} />
+                      <Route index path='/profile' element={<Profile />} />
+                      <Route index path='/commands' element={<Commands />} />
+                      <Route index path='/stock' element={<StockManagement />} />
+                  </Routes>
+              </Layout>
+          </BrowserRouter>
+      </Provider>
   )
 }
 

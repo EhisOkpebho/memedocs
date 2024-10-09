@@ -11,7 +11,7 @@ export default function Profile() {
                     Mon profil
                 </h3>
                 <form className='flex flex-col gap-y-8'>
-                    <div className='flex flex-wrap gap-4'>
+                    <div className='flex flex-col md:flex-row md:flex-wrap gap-4'>
                         <FormInput label='Identifiant'  placeholder='Aucune donnée' />
                         <FormInput label='Email'  placeholder='Aucune donnée' />
                         <FormInput label='N° Siret'
