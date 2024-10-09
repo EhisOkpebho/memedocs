@@ -7,7 +7,7 @@ export default function Commands() {
         <>
             <MySpaceLayout>
                 <div className='p-8 w-full flex flex-col gap-y-8 rounded-3xl shadow-sm bg-white'>
-                    <h3 className='text-center font-bold text-2xl'>
+                    <h3 className='max-sm:text-center font-bold text-2xl'>
                         <ListOrdered className='mb-1 mr-2 size-6 inline'/>
                         Liste des commandes <span className='text-base'>({new Date().toLocaleDateString()})</span>
                     </h3>

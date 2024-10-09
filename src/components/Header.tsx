@@ -13,17 +13,15 @@ const Header = () => {
             </Link>
             {
                 me ? (
-                    // <Link to='/auth/login'
-                    //       className='px-3 h-10 sm:h-8 flex items-center gap-x-2 rounded-md bg-primary uppercase text-xs text-white'>
-                    //     <User className='size-4'/>
-                    //     <span className='hidden sm:block'>Me connecter</span>
-                    // </Link>
-                    <div className='font-medium text-gray-900'>
-                        <User className='mr-1 mb-1 size-4 inline' />
-                        <span>{me.identifier}</span>
-                    </div>
+                    <Link to='/auth/login'
+                          className='px-3 h-10 sm:h-8 flex items-center gap-x-2 rounded-md bg-primary uppercase text-xs text-white'>
+                        <User className='size-4'/>
+                        <span className='hidden sm:block'>Me connecter</span>
+                    </Link>
+
                 ) : (
-                    <div>
+                    <div className='font-medium text-gray-900'>
+                        <User className='mr-1 mb-1 size-4 inline'/>
                         <span>{me.identifier}</span>
                     </div>
                 )

@@ -23,7 +23,7 @@ export default function Profile() {
                         <FormInput label="Ville"  placeholder='Aucune donnée' />
                     </div>
                     <button
-                        className='w-full h-12 rounded-lg bg-pharmacist tracking-wider uppercase text-sm font-medium text-white hover:brightness-95 duration-150'>
+                        className='w-full h-12 rounded-lg bg-pharmacist tracking-wider uppercase text-xs sm:text-sm font-medium text-white hover:brightness-95 duration-150'>
                         <Save className='mr-2 mb-1 size-3.5 inline'/>
                         Enregistrer les modifications
                     </button>
