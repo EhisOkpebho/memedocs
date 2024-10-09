@@ -8,11 +8,11 @@ const Header = () => {
                 <figure className='w-10 aspect-square bg-cover' style={{backgroundImage: "url('/logo.png')"}}/>
                 MéméDoc
             </Link>
-            <button
+            <Link to='/auth/login'
                 className='px-3 h-8 flex items-center gap-x-2 rounded-md bg-primary uppercase text-xs text-white'>
                 <User className='size-4'/>
                 Me connecter
-            </button>
+            </Link>
         </header>
     )
 }

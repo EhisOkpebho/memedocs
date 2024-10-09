@@ -1,6 +1,7 @@
 import {ReactNode} from "react";
 import Header from "../components/Header";
 import {Blocks, CircleUser, ListOrdered} from "lucide-react";
+import {Link} from "react-router-dom";
 
 export default function Layout({ children }: { children: ReactNode }) {
     return (
@@ -16,21 +17,21 @@ export default function Layout({ children }: { children: ReactNode }) {
                 </div>
             </div>
             <div className='w-full flex flex-row rounded-3xl shadow-sm bg-white font-medium text-gray-900'>
-                <button
-                    className='py-4 w-full rounded-3xl rounded-r-none border border-b-2 hover:border-primary/50 hover:bg-primary/10 hover:text-primary tracking-wider duration-150'>
-                    <CircleUser className='mr-2 mb-1 size-5 inline'/>
+                <Link to='/profile'
+                    className='py-4 w-full  flex items-center justify-center rounded-3xl rounded-r-none border border-b-2 hover:border-primary/50 hover:bg-primary/10 hover:text-primary tracking-wider duration-150'>
+                    <CircleUser className='mr-2 mb-1 size-5'/>
                     Profil
-                </button>
-                <button
-                    className='py-4 w-full border border-b-2 hover:border-primary/50 hover:bg-primary/10 hover:text-primary tracking-wider duration-150'>
-                    <ListOrdered className='mr-1 mb-1 size-5 inline'/>
+                </Link>
+                <Link to='/commands'
+                    className='py-4 w-full flex items-center justify-center border border-b-2 hover:border-primary/50 hover:bg-primary/10 hover:text-primary tracking-wider duration-150'>
+                    <ListOrdered className='mr-1 mb-1 size-5'/>
                     Liste des commandes
-                </button>
-                <button
-                    className='py-4 w-full rounded-3xl rounded-l-none border border-b-2 hover:border-primary/50 hover:bg-primary/10 hover:text-primary tracking-wider duration-150'>
-                    <Blocks className='mr-1 mb-1 size-5 inline'/>
-                    Gestion du stocks
-                </button>
+                </Link>
+                <Link to='/stock'
+                    className='py-4 w-full  flex items-center justify-center rounded-3xl rounded-l-none border border-b-2 hover:border-primary/50 hover:bg-primary/10 hover:text-primary tracking-wider duration-150'>
+                    <Blocks className='mr-1 mb-1 size-5'/>
+                    Gestion du stock
+                </Link>
             </div>
             {children}
         </>

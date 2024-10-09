@@ -12,13 +12,15 @@ export default function Profile() {
                 </h3>
                 <form className='flex flex-col gap-y-8'>
                     <div className='flex flex-wrap gap-4'>
-                        <FormInput label='Identifiant' description='Identifiant'/>
-                        <FormInput label='Siret'
+                        <FormInput label='Identifiant'  placeholder='Aucune donnée' />
+                        <FormInput label='Email'  placeholder='Aucune donnée' />
+                        <FormInput label='N° Siret'
+                                   placeholder='Aucune donnée'
                                    description="Système d'identification du répertoire des établissements"/>
-                        <FormInput label='Numéro de rue'/>
-                        <FormInput label="Complément d'adresse"/>
-                        <FormInput label="Code postale"/>
-                        <FormInput label="Ville"/>
+                        <FormInput label='Numéro de rue'  placeholder='Aucune donnée' />
+                        <FormInput label="Complément d'adresse"  placeholder='Aucune donnée' />
+                        <FormInput label="Code postale"  placeholder='Aucune donnée' />
+                        <FormInput label="Ville"  placeholder='Aucune donnée' />
                     </div>
                     <button
                         className='w-full h-12 rounded-lg bg-pharmacist tracking-wider uppercase text-sm font-medium text-white hover:brightness-95 duration-150'>
