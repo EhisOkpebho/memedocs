@@ -1,9 +1,19 @@
-import {ReactNode} from "react";
+import {ReactNode, useEffect} from "react";
 import Header from "../components/Header";
 import {Blocks, CircleUser, ListOrdered} from "lucide-react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {useGetMe} from "../utils/utils";
 
 export default function PharmacistSpaceLayout({ children }: { children: ReactNode }) {
+    const navigate = useNavigate()
+    const me = useGetMe()
+
+    useEffect(() => {
+        // if (me.isVisitor) {
+        //     navigate('/')
+        // }
+    }, [me])
+
     return (
         <>
             <Header/>

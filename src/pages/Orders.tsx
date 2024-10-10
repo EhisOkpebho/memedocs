@@ -6,7 +6,7 @@ import {useState} from "react";
 export default function Orders() {
     const [socialSecurityNumber, setSocialSecurityNumber] = useState<string>()
 
-    
+
     return (
         <>
             <DoctorSpaceLayout>

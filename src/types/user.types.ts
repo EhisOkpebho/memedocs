@@ -1,4 +1,5 @@
 export type UserDtoTypes = {
+    isVisitor: boolean
     email: string
     identifier: string
     firstname: string
@@ -7,5 +8,5 @@ export type UserDtoTypes = {
 } & PharmacistUserTypes
 
 export type PharmacistUserTypes = {
-    pharmacyId: string
+    pharmacyId?: string
 }

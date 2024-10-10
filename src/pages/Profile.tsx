@@ -5,11 +5,19 @@ import {useGetMe} from "../utils/utils";
 import DoctorSpaceLayout from "../layouts/DoctorSpaceLayout";
 import {useEffect, useState} from "react";
 import {PharmacyDtoTypes} from "../types/pharmacy.types";
+import {useNavigate} from "react-router-dom";
 
 function Profile() {
+    const navigate = useNavigate()
     const me = useGetMe()
 
     const [pharmacy, setPharmacy] = useState<Partial<PharmacyDtoTypes>>()
+
+    useEffect(() => {
+        // if (me.isVisitor) {
+        //     navigate('/')
+        // }
+    }, [me])
 
     useEffect(() => {
         fetch(process.env.REACT_APP_API_URL + `/pharmacies/${me.pharmacyId}`)

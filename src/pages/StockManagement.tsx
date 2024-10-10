@@ -13,12 +13,14 @@ export default function Commands() {
     const [inventory, setInventory] = useState<MedicineInventoryEntryDtoTypes[]>([])
     const [filter, setFilter] = useState<string>('')
 
-    useEffect(() => {
-        getInventory().then(setInventory)
-    }, [])
+    useEffect(() => updateInventory, [])
 
     async function getInventory() {
         return (await (await fetch(process.env.REACT_APP_API_URL + `/pharmacies/${me.pharmacyId}`)).json()).inventory
+    }
+
+    function updateInventory() {
+        getInventory().then(setInventory)
     }
 
     function getFilteredInventory() {
@@ -34,6 +36,7 @@ export default function Commands() {
             if (res.ok && addToStockInputRef.current) {
                 addToStockInputRef.current.value = ''
                 addToStockInputRef.current.textContent = ''
+                updateInventory()
             }
         })
     }

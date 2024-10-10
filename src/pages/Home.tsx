@@ -40,11 +40,11 @@ export default function Home() {
 
     const listRefs = useRef<(HTMLLIElement | null)[]>([])
 
-    useEffect(() => {
-        if (me) {
-            navigate('/profile')
-        }
-    }, [me])
+    // useEffect(() => {
+    //     if (me) {
+    //         navigate('/profile')
+    //     }
+    // }, [me])
 
     const storeRef = (el: any, index: number) => {
         if (el && !listRefs.current[index]) {
