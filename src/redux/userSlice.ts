@@ -8,8 +8,8 @@ const userSlice = createSlice({
             firstname: 'John',
             lastname: 'DOE',
             identifier: 'John Doe',
-            // type: 'doctor',
-            type: 'pharmacist',
+            type: 'doctor',
+            // type: 'pharmacist',
             pharmacyId: 'd38aec54-ad17-4f28-ba2a-b6d3ec61c8bc'
         }
     },
@@ -24,6 +24,7 @@ const userSlice = createSlice({
                 lastname: 'DOE',
                 identifier: 'John Doe',
                 type: 'doctor',
+                // type: 'pharmacist',
                 pharmacyId: 'd38aec54-ad17-4f28-ba2a-b6d3ec61c8bc'
             }
         }

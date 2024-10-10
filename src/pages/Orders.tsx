@@ -27,7 +27,7 @@ export default function Orders() {
                         <h3 className='text-sm'>
                             <span className='mr-1 font-semibold'>(0)</span>
                             Résultats pour la recherche du numéro :
-                            <span className='font-semibold text-blue-400'> {socialSecurityNumber ?? 'X XX XX XX XXX XXX XX'}</span>
+                            <span className='uppercase font-semibold text-blue-400'> {socialSecurityNumber ?? 'X XX XX XX XXX XXX XX'}</span>
                         </h3>
                     </div>
                 </div>

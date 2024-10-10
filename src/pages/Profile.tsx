@@ -41,15 +41,23 @@ function Profile() {
                 </h3>
                 <form onSubmit={(e) => e.preventDefault()} className='flex flex-col gap-y-8'>
                     <div className='flex flex-col md:flex-row md:flex-wrap gap-4'>
-                        <FormInput label='Identifiant'  placeholder='Aucune donnée' value={pharmacy ? pharmacy.name : me.firstname + ' ' + me.lastname.toUpperCase()} onChange={(e) => setPharmacy({ ...pharmacy, name: e.target.value })} contentEditable={!!pharmacy} disabled={!pharmacy} />
+                        {
+                            me.type === 'pharmacist' && (
+                                <FormInput label='Identifiant'  placeholder='Aucune donnée' value={pharmacy ? pharmacy.name : me.firstname + ' ' + me.lastname.toUpperCase()} onChange={(e) => setPharmacy({ ...pharmacy, name: e.target.value })} contentEditable={!!pharmacy} disabled={!pharmacy} />
+                            )
+                        }
                         <FormInput label='Email'  placeholder='Aucune donnée' value={me.email} />
-                        <FormInput label='N° Siret'
-                                   placeholder='Aucune donnée'
-                                   value={pharmacy && pharmacy.siret}
-                                   onChange={(e) => setPharmacy({ ...pharmacy, siret: e.target.value })}
-                                   description="Système d'identification du répertoire des établissements"
-                                   contentEditable={!!pharmacy} disabled={!pharmacy}
-                        />
+                        {
+                            me.type === 'pharmacist' && (
+                                <FormInput label='N° Siret'
+                                           placeholder='Aucune donnée'
+                                           value={pharmacy && pharmacy.siret}
+                                           onChange={(e) => setPharmacy({ ...pharmacy, siret: e.target.value })}
+                                           description="Système d'identification du répertoire des établissements"
+                                           contentEditable={!!pharmacy} disabled={!pharmacy}
+                                />
+                            )
+                        }
                         <FormInput label='Numéro de rue' placeholder='Aucune donnée' value={pharmacy && pharmacy.address?.street} onChange={(e) => setPharmacy({ ...pharmacy, address: { ...pharmacy?.address, street: e.target.value } })} contentEditable={me.pharmacyId && !!pharmacy} disabled={me.pharmacyId && !pharmacy} />
                         <FormInput label="Complément d'adresse"  placeholder='Aucune donnée' value={pharmacy && pharmacy.address?.complement} onChange={(e) => setPharmacy({ ...pharmacy, address: { ...pharmacy?.address, complement: e.target.value } })} contentEditable={!!pharmacy} disabled={me.pharmacyId &&  !pharmacy}  />
                         <FormInput label="Code postale"  placeholder='Aucune donnée' value={pharmacy  && pharmacy.address?.postalCode} pattern='[0-9]'  onChange={(e) => setPharmacy({ ...pharmacy, address: { ...pharmacy?.address, postalCode: e.target.valueAsNumber } })} contentEditable={me.pharmacyId && !!pharmacy} disabled={me.pharmacyId && !pharmacy} />
