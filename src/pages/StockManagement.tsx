@@ -11,6 +11,7 @@ export default function Commands() {
     const addToStockInputRef = useRef<HTMLInputElement>(null)
     const [label, setLabel] = useState<string>()
     const [inventory, setInventory] = useState<MedicineInventoryEntryDtoTypes[]>([])
+    const [filter, setFilter] = useState<string>('')
 
     useEffect(() => {
         getInventory().then(setInventory)
@@ -18,6 +19,10 @@ export default function Commands() {
 
     async function getInventory() {
         return (await (await fetch(process.env.REACT_APP_API_URL + `/pharmacies/${me.pharmacyId}`)).json()).inventory
+    }
+
+    function getFilteredInventory() {
+        return inventory.filter((e) => e.medicine.label.toLowerCase().startsWith(label?.toLowerCase() ?? ''))
     }
 
     function handleAddMedicineToStock() {
@@ -54,25 +59,30 @@ export default function Commands() {
                             <span className='hidden md:inline'>Ajouter au stock</span>
                         </button>
                     </div>
-                    <FormInput label='Filtrer' placeholder='Nom du produit' icon={Filter} className='h-8'/>
-                    <table className="table-auto w-full">
-                        <thead>
-                        <tr>
-                            <th className="h-12 px-4 py-2">Nom du produit</th>
-                            <th className="h-12 px-4 py-2">Quantité</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {
-                            inventory.map((e, index) => (
-                                <tr key={index}>
-                                    <td className="h-12 px-4 py-2 border">{e.medicine.label}</td>
-                                    <td className="h-12 px-4 py-2 border">{e.quantity}</td>
+                    <FormInput label='Filtrer' placeholder='Nom du produit' icon={Filter} onChange={(e) => setLabel(e.target.value)} className='h-8'/>
+                    {
+                        getFilteredInventory().length > 0 && (
+                            <table className="table-auto w-full">
+                                <thead>
+                                <tr>
+                                    <th className="h-12 px-4 py-2">Nom du produit</th>
+                                    <th className="h-12 px-4 py-2">Quantité</th>
                                 </tr>
-                            ))
-                        }
-                        </tbody>
-                    </table>
+                                </thead>
+                                <tbody>
+                                {
+                                    getFilteredInventory()
+                                        .map((e, index) => (
+                                            <tr key={index}>
+                                                <td className="h-12 px-4 py-2 border">{e.medicine.label}</td>
+                                                <td className="h-12 px-4 py-2 border">{e.quantity}</td>
+                                            </tr>
+                                        ))
+                                }
+                                </tbody>
+                            </table>
+                        )
+                    }
                 </div>
             </PharmacistSpaceLayout>
         </>
