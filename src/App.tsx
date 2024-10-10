@@ -11,6 +11,7 @@ import Registration from "./pages/Registration";
 import {Provider} from "react-redux";
 import store from "./redux/store";
 import Orders from "./pages/Orders";
+import AddOrder from "./pages/AddOrder";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
                       <Route index path='/commands' element={<Commands />} />
                       <Route index path='/stock' element={<StockManagement />} />
                       <Route index path='/orders' element={<Orders />} />
+                      <Route index path='/orders/add' element={<AddOrder />} />
                   </Routes>
               </Layout>
           </BrowserRouter>
