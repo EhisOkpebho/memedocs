@@ -1,8 +1,38 @@
-import {Blocks, CirclePlus, Filter} from "lucide-react";
+import {Blocks, CirclePlus, Filter, Search} from "lucide-react";
 import FormInput from "../components/FormInput";
 import PharmacistSpaceLayout from "../layouts/PharmacistSpaceLayout";
+import {useGetMe} from "../utils/utils";
+import {useEffect, useRef, useState} from "react";
+import {MedicineInventoryEntryDtoTypes} from "../types/pharmacy.types";
 
 export default function Commands() {
+    const me = useGetMe()
+
+    const addToStockInputRef = useRef<HTMLInputElement>(null)
+    const [label, setLabel] = useState<string>()
+    const [inventory, setInventory] = useState<MedicineInventoryEntryDtoTypes[]>([])
+
+    useEffect(() => {
+        getInventory().then(setInventory)
+    }, [])
+
+    async function getInventory() {
+        return (await (await fetch(process.env.REACT_APP_API_URL + `/pharmacies/${me.pharmacyId}`)).json()).inventory
+    }
+
+    function handleAddMedicineToStock() {
+        fetch(process.env.REACT_APP_API_URL + `/pharmacies/${me.pharmacyId}/inventory`, {
+            method: 'POST',
+            headers: {     "Content-Type": "application/json"   },
+            body: JSON.stringify({ label })
+        }).then((res) => {
+            if (res.ok && addToStockInputRef.current) {
+                addToStockInputRef.current.value = ''
+                addToStockInputRef.current.textContent = ''
+            }
+        })
+    }
+
     return (
         <>
             <PharmacistSpaceLayout>
@@ -12,12 +42,37 @@ export default function Commands() {
                             <Blocks className='mb-1 mr-2 size-6 inline'/>
                             Gestion du stock
                         </h3>
-                        <button className='px-4 py-1 max-md:h-10 rounded-md bg-primary text-sm text-white hover:brightness-95 duration-150'>
-                            <CirclePlus className='mr-1 size-4 inline' />
-                            Ajouter un médicament
+                        <div></div>
+                    </div>
+                    <div className='flex space-x-2 items-end'>
+                        <FormInput inputRef={addToStockInputRef} label='Nom du médicamentt' placeholder='Doliprane 500mg'
+                                   icon={CirclePlus} onChange={(e) => setLabel(e.target.value)} />
+                        <button
+                            onClick={handleAddMedicineToStock}
+                            className='px-4 py-1 h-10 rounded-md bg-primary tracking-wider uppercase text-xs sm:text-sm font-medium text-white hover:brightness-95 duration-150'>
+                            <CirclePlus className='md:mr-2 mb-1 size-3.5 inline'/>
+                            <span className='hidden md:inline'>Ajouter au stock</span>
                         </button>
                     </div>
                     <FormInput label='Filtrer' placeholder='Nom du produit' icon={Filter} className='h-8'/>
+                    <table className="table-auto w-full">
+                        <thead>
+                        <tr>
+                            <th className="h-12 px-4 py-2">Nom du produit</th>
+                            <th className="h-12 px-4 py-2">Quantité</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {
+                            inventory.map((e, index) => (
+                                <tr key={index}>
+                                    <td className="h-12 px-4 py-2 border">{e.medicine.label}</td>
+                                    <td className="h-12 px-4 py-2 border">{e.quantity}</td>
+                                </tr>
+                            ))
+                        }
+                        </tbody>
+                    </table>
                 </div>
             </PharmacistSpaceLayout>
         </>

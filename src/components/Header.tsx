@@ -22,7 +22,7 @@ const Header = () => {
                 ) : (
                     <div className='font-medium text-gray-900'>
                         <User className='mr-1 mb-1 size-4 inline'/>
-                        <span>{me.identifier}</span>
+                        <span>{me.firstname} {me.lastname}</span>
                     </div>
                 )
             }

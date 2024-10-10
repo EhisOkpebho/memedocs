@@ -4,10 +4,13 @@ const userSlice = createSlice({
     name: 'user',
     initialState: {
         user: {
-            firstname: 'Ehis',
-            lastname: 'OKPEBHO',
-            identifier: 'Ehis OKPEBHO',
-            type: 'doctor'
+            email: 'john.doe@gmail.com',
+            firstname: 'John',
+            lastname: 'DOE',
+            identifier: 'John Doe',
+            // type: 'doctor',
+            type: 'pharmacist',
+            pharmacyId: 'd38aec54-ad17-4f28-ba2a-b6d3ec61c8bc'
         }
     },
     reducers: {
@@ -16,10 +19,12 @@ const userSlice = createSlice({
         },
         clearUser: (state) => {
             state.user = {
-                firstname: 'Ehis',
-                lastname: 'OKPEBHO',
-                identifier: 'Ehis OKPEBHO',
-                type: 'doctor'
+                email: 'john.doe@gmail.com',
+                firstname: 'John',
+                lastname: 'DOE',
+                identifier: 'John Doe',
+                type: 'doctor',
+                pharmacyId: 'd38aec54-ad17-4f28-ba2a-b6d3ec61c8bc'
             }
         }
     }
